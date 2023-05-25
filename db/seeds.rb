@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require 'faker'
+
+puts "Creating 100 movies"
+
+100.times do
+  Movie.create(
+    title: Faker::Movie.title,
+    overview: Faker::Lorem.paragraph,
+    rating: Faker::Number.between(from: 1, to: 10),
+    poster_url: Faker::Internet.url
+)
+  puts "The movie was created"
+end
+puts "done"
